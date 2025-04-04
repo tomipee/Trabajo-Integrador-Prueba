@@ -40,6 +40,15 @@ def imprimir_porronda(elem,mvp_porpartida,ronda):
     print('-----------------------------------------')
     print()
    
+def imprimir_rondafinal(ronda_final):
+    print()
+    print(f"Ranking final")
+    print(' Jugador   Kills   Asistencias   Muertes   MVPs   Puntos')
+    print('---------------------------------------------------------')
+    for jugador in ronda_final:
+        print(f" {jugador}      {ronda_final[jugador]['kills']}          {ronda_final[jugador]['assists']}            {ronda_final[jugador]['deaths']}       {ronda_final[jugador]['MVPs']}       {ronda_final[jugador]['puntos']}\n")
+    print('---------------------------------------------------------')
+    print()
 
 
 
