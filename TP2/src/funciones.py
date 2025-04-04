@@ -1,22 +1,45 @@
-def sumar_estadisticas(ronda_final,ronda_normal,estadistica,stats,jugador):
+def sumar_estadisticas(ronda_final,mvp_porpartida,estadistica,stats,jugador):
     if estadistica == 'kills':
         if(stats[estadistica] != 0):
             punto = stats[estadistica] * 3
             ronda_final[jugador]['kills'] += stats[estadistica]
             ronda_final[jugador]['puntos'] += punto
-            ronda_normal[jugador][estadistica] += stats[estadistica]
+            mvp_porpartida[jugador] += punto
     if estadistica == 'assists':
         if(stats[estadistica] != 0):
             punto = stats[estadistica] * 1
             ronda_final[jugador]['assists'] += stats[estadistica]
             ronda_final[jugador]['puntos'] += punto
-            ronda_normal[jugador][estadistica] += stats[estadistica]
+            mvp_porpartida[jugador] += punto
     if estadistica == 'deaths':
         if stats[estadistica]:
             ronda_final[jugador][estadistica] += 1
             ronda_final[jugador]['puntos'] -= 1  
-            ronda_normal[jugador][estadistica] = True
+            mvp_porpartida[jugador] -= 1
 
+def calcular_mvp(ronda_final, mvp_porpartida):
+    max = -100
+    for jugador in mvp_porpartida:
+        if(mvp_porpartida[jugador] > max):
+            max = mvp_porpartida[jugador]
+            j = jugador
+    ronda_final[j]['MVPs'] +=1 
+        
+
+def inicializar_en0(mvp_porpartida):
+    for elem in mvp_porpartida:
+        mvp_porpartida[elem] = 0
+
+def imprimir_porronda(elem,mvp_porpartida,ronda):
+    print()
+    print(f"Ranking ronda {ronda}")
+    print(' jugador   kills   asistencias   muertes ')
+    print('-----------------------------------------')
+    for jugador in elem:
+        print(f" {jugador}      {elem[jugador]['kills']}          {elem[jugador]['assists']}         {elem[jugador]['deaths']}\n")
+    print('-----------------------------------------')
+    print()
+   
 
 
 
