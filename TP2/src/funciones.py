@@ -1,3 +1,27 @@
+def sumar_estadisticas(ronda_final,ronda_normal,estadistica,stats,jugador):
+    if estadistica == 'kills':
+        if(stats[estadistica] != 0):
+            punto = stats[estadistica] * 3
+            ronda_final[jugador]['kills'] += stats[estadistica]
+            ronda_final[jugador]['puntos'] += punto
+            ronda_normal[jugador][estadistica] += stats[estadistica]
+    if estadistica == 'assists':
+        if(stats[estadistica] != 0):
+            punto = stats[estadistica] * 1
+            ronda_final[jugador]['assists'] += stats[estadistica]
+            ronda_final[jugador]['puntos'] += punto
+            ronda_normal[jugador][estadistica] += stats[estadistica]
+    if estadistica == 'deaths':
+        if stats[estadistica]:
+            ronda_final[jugador][estadistica] += 1
+            ronda_final[jugador]['puntos'] -= 1  
+            ronda_normal[jugador][estadistica] = True
+
+
+
+
+
+
 
 def dividirLinea(palabra):
     e = palabra.split()
